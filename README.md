@@ -2,6 +2,12 @@
 
 Welcome to the backend of **Shoppy Globe**, an e-commerce platform designed to provide seamless shopping experiences. This backend handles user registration and login, product management and cart operations.
 
+## Link
+
+[Github](https://github.com/mmj030703/Internshala-NodeJS-Project-ShoppyGlobe)
+
+---
+
 ## Features
 
 - **User Authentication**: Secure user registration and login with password hashing.
