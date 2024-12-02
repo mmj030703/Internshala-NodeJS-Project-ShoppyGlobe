@@ -7,8 +7,7 @@ Welcome to the backend of **Shoppy Globe**, an e-commerce platform designed to p
 - **User Authentication**: Secure user registration and login with password hashing.
 - **Product Management**: CRUD operations for products.
 - **Cart Management**: Add, update, and delete items from the cart.
-- **Order Management**: Place and track orders.
-- **Middleware**: Centralized error handling and authentication using JWT.
+- **Middleware**: Centralized error handling, checking fields availability and authentication using JWT.
 - **Database**: MongoDB for data storage.
 
 ---
@@ -29,8 +28,8 @@ Ensure you have the following installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/shoppy-globe-backend.git
-   cd shoppy-globe-backend
+   git clone https://github.com/mmj030703/Internshala-NodeJS-Project-ShoppyGlobe.git
+   cd Internshala-NodeJS-Project-ShoppyGlobe
    ```
 
 2. Install dependencies:
@@ -42,16 +41,17 @@ Ensure you have the following installed:
 3. Create a `.env` file in the root directory and add the following variables:
 
    ```env
-   PORT=5000
-   MONGO_URI=<your_mongodb_connection_string>
-   JWT_SECRET=<your_secret_key>
+   PORT=3000
+   DATABASE_NAME=<db_name>
+   MONGODB_URI=<your_mongodb_connection_string>
+   JWT_SECRET_KEY=<your_secret_key>
    ```
 
 4. Start the server:
    ```bash
    npm start
    ```
-   The server will run on `http://localhost:5000`.
+   The server will run on `http://localhost:3000`.
 
 ---
 
@@ -69,18 +69,21 @@ Ensure you have the following installed:
 | Method | Endpoint        | Description            |
 | ------ | --------------- | ---------------------- |
 | GET    | `/products`     | Get all products       |
+| GET    | `/products/:id` | Get a product by ID    |
 | POST   | `/products`     | Add a new product      |
 | PUT    | `/products/:id` | Update a product by ID |
 | DELETE | `/products/:id` | Delete a product by ID |
 
 ### Cart
 
-| Method | Endpoint           | Description                  |
-| ------ | ------------------ | ---------------------------- |
-| GET    | `/cart`            | Get cart items for a user    |
-| POST   | `/cart/add`        | Add an item to the cart      |
-| PUT    | `/cart/update/:id` | Update an item in the cart   |
-| DELETE | `/cart/delete/:id` | Remove an item from the cart |
+| Method     | Endpoint          | Description                               |
+| ---------- | ----------------- | ----------------------------------------- |
+| GET        | `/cart/:id`       | Get all cart items for a user             |
+| GET        | `/cart/items/:id` | Get a cart items for a user               |
+| POST       | `/cart`           | Add an item to the cart                   |
+| PUT        | `/cart/items/:id` | Update an item in the cart                |
+| DELETE     | `/cart/:id`       | Remove an item from the cart              |
+| DELETE ALL | `/cart/all/:id`   | Remove all items from the cart for a user |
 
 ---
 
@@ -90,10 +93,9 @@ Ensure you have the following installed:
 shoppy-globe-backend/
 ├── config/            # Configuration files
 ├── controllers/       # Route handlers
-├── middleware/        # Custom middleware
+├── middlewares/        # Custom middleware
 ├── models/            # Mongoose models
 ├── routes/            # API routes
-├── utils/             # Helper functions
 ├── server.js          # Entry point
 └── .env               # Environment variables
 ```
@@ -107,16 +109,6 @@ shoppy-globe-backend/
 - **Bcrypt**: Password hashing
 - **jsonwebtoken**: Token-based authentication
 - **Dotenv**: Environment variable management
-
----
-
-## Contributing
-
-1. Fork the repository.
-2. Create a feature branch: `git checkout -b feature-name`.
-3. Commit your changes: `git commit -m 'Add some feature'`.
-4. Push to the branch: `git push origin feature-name`.
-5. Open a pull request.
 
 ---
 
